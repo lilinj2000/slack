@@ -2,8 +2,8 @@ AUTOMAKE_OPTIONS = foreign
 
 bin_PROGRAMS = slack
 slack_SOURCES = \
-	SlackConfig.cc \
-	SlackServer.cc \
+	Config.cc \
+	Server.cc \
 	Main.cc
 
 slack_CPPFLAGS =  \
@@ -23,9 +23,9 @@ slack_LDADD = \
 slack_LDFLAGS = $(LIBADD_DL) -Wl,--no-as-needed -pthread
 
 # header files
-noinst_HEADERS = SlackConfig.hh \
-	SlackServer.hh \
-	SlackLog.hh
+noinst_HEADERS = Config.hh \
+	Server.hh \
+	Log.hh
 
 EXTRA_DIST = env.sh slack.cfg log.cfg
 

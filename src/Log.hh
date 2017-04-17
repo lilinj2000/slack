@@ -1,3 +1,6 @@
+// Copyright (c) 2010
+// All rights reserved.
+
 #ifndef SLACK_LOG_HH
 #define SLACK_LOG_HH
 

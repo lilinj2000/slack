@@ -1,24 +1,25 @@
+// Copyright (c) 2010
+// All rights reserved.
+
 #ifndef SLACK_SERVER_HH
 #define SLACK_SERVER_HH
 
+#include <string>
 #include "sea/MDService.hh"
 #include "air/MDataFile.hh"
 
-namespace slack
-{
+namespace slack {
 
-class SlackOptions;
+class Options;
 
-class SlackServer : public sea::MDServiceCallback
-{
+class Server : public sea::MDServiceCallback {
  public:
-  SlackServer(SlackOptions* slack_options,
-              soil::Options* options);
+  Server(Options* slack_options,
+         soil::Options* options);
 
-  virtual ~SlackServer();
-  
+  virtual ~Server();
+
  protected:
-
   virtual void onRspSubMarketData(const std::string& instru, bool success);
 
   virtual void onRspUnsubMarketData(const std::string& instru, bool success);
@@ -28,17 +29,13 @@ class SlackServer : public sea::MDServiceCallback
   virtual void onRspError(int errord_id, const std::string& error_msg);
 
   air::SpeedMData* toSpeedMData(const sea::DepthMarketData* data);
-  
+
  private:
-
-  SlackOptions* slack_options_;
-  
+  Options* options_;
   std::unique_ptr<sea::MDService> md_service_;
-
   std::unique_ptr<air::MDataFile> speed_file_;
-
 };
 
-};
+}  // namespace slack
 
 #endif

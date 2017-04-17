@@ -1,26 +1,22 @@
+// Copyright (c) 2010
+// All rights reserved.
+
 #include <memory>
 
-#include "SlackConfig.hh"
-#include "SlackServer.hh"
-#include "soil/STimer.hh"
+#include "Config.hh"
+#include "Server.hh"
+#include "soil/Pause.hh"
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
+  std::unique_ptr<slack::Config> config;
+  config.reset(new slack::Config(argc, argv));
 
-  std::unique_ptr<slack::SlackConfig> config;
-  config.reset(new slack::SlackConfig(argc, argv));
+  std::unique_ptr<slack::Server> server;
+  server.reset(new slack::Server(config->slackOptions(),
+                                 config->seaMDOptions()));
 
-  std::unique_ptr<slack::SlackServer> server;
-  server.reset(new slack::SlackServer(config->slackOptions(),
-                                      config->seaMDOptions()) );
-  
-  std::unique_ptr<soil::STimer> cond;
-  cond.reset( soil::STimer::create() );
+  std::unique_ptr<soil::Pause> pause;
+  pause.reset(soil::Pause::create());
 
-  do
-  {
-    cond->wait(2000);
-  }while(true);
-  
   return 0;
 }

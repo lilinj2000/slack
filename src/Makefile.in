@@ -96,8 +96,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(slackdir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_slack_OBJECTS = slack-SlackConfig.$(OBJEXT) \
-	slack-SlackServer.$(OBJEXT) slack-Main.$(OBJEXT)
+am_slack_OBJECTS = slack-Config.$(OBJEXT) slack-Server.$(OBJEXT) \
+	slack-Main.$(OBJEXT)
 slack_OBJECTS = $(am_slack_OBJECTS)
 am__DEPENDENCIES_1 =
 slack_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
@@ -339,8 +339,8 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = foreign
 slack_SOURCES = \
-	SlackConfig.cc \
-	SlackServer.cc \
+	Config.cc \
+	Server.cc \
 	Main.cc
 
 slack_CPPFLAGS = \
@@ -358,9 +358,9 @@ slack_LDADD = \
 slack_LDFLAGS = $(LIBADD_DL) -Wl,--no-as-needed -pthread
 
 # header files
-noinst_HEADERS = SlackConfig.hh \
-	SlackServer.hh \
-	SlackLog.hh
+noinst_HEADERS = Config.hh \
+	Server.hh \
+	Log.hh
 
 EXTRA_DIST = env.sh slack.cfg log.cfg
 slackdir = $(bindir)
@@ -459,9 +459,9 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slack-Config.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slack-Main.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slack-SlackConfig.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slack-SlackServer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slack-Server.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -484,33 +484,33 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
 
-slack-SlackConfig.o: SlackConfig.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slack-SlackConfig.o -MD -MP -MF $(DEPDIR)/slack-SlackConfig.Tpo -c -o slack-SlackConfig.o `test -f 'SlackConfig.cc' || echo '$(srcdir)/'`SlackConfig.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slack-SlackConfig.Tpo $(DEPDIR)/slack-SlackConfig.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='SlackConfig.cc' object='slack-SlackConfig.o' libtool=no @AMDEPBACKSLASH@
+slack-Config.o: Config.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slack-Config.o -MD -MP -MF $(DEPDIR)/slack-Config.Tpo -c -o slack-Config.o `test -f 'Config.cc' || echo '$(srcdir)/'`Config.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slack-Config.Tpo $(DEPDIR)/slack-Config.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Config.cc' object='slack-Config.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o slack-SlackConfig.o `test -f 'SlackConfig.cc' || echo '$(srcdir)/'`SlackConfig.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o slack-Config.o `test -f 'Config.cc' || echo '$(srcdir)/'`Config.cc
 
-slack-SlackConfig.obj: SlackConfig.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slack-SlackConfig.obj -MD -MP -MF $(DEPDIR)/slack-SlackConfig.Tpo -c -o slack-SlackConfig.obj `if test -f 'SlackConfig.cc'; then $(CYGPATH_W) 'SlackConfig.cc'; else $(CYGPATH_W) '$(srcdir)/SlackConfig.cc'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slack-SlackConfig.Tpo $(DEPDIR)/slack-SlackConfig.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='SlackConfig.cc' object='slack-SlackConfig.obj' libtool=no @AMDEPBACKSLASH@
+slack-Config.obj: Config.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slack-Config.obj -MD -MP -MF $(DEPDIR)/slack-Config.Tpo -c -o slack-Config.obj `if test -f 'Config.cc'; then $(CYGPATH_W) 'Config.cc'; else $(CYGPATH_W) '$(srcdir)/Config.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slack-Config.Tpo $(DEPDIR)/slack-Config.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Config.cc' object='slack-Config.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o slack-SlackConfig.obj `if test -f 'SlackConfig.cc'; then $(CYGPATH_W) 'SlackConfig.cc'; else $(CYGPATH_W) '$(srcdir)/SlackConfig.cc'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o slack-Config.obj `if test -f 'Config.cc'; then $(CYGPATH_W) 'Config.cc'; else $(CYGPATH_W) '$(srcdir)/Config.cc'; fi`
 
-slack-SlackServer.o: SlackServer.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slack-SlackServer.o -MD -MP -MF $(DEPDIR)/slack-SlackServer.Tpo -c -o slack-SlackServer.o `test -f 'SlackServer.cc' || echo '$(srcdir)/'`SlackServer.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slack-SlackServer.Tpo $(DEPDIR)/slack-SlackServer.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='SlackServer.cc' object='slack-SlackServer.o' libtool=no @AMDEPBACKSLASH@
+slack-Server.o: Server.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slack-Server.o -MD -MP -MF $(DEPDIR)/slack-Server.Tpo -c -o slack-Server.o `test -f 'Server.cc' || echo '$(srcdir)/'`Server.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slack-Server.Tpo $(DEPDIR)/slack-Server.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Server.cc' object='slack-Server.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o slack-SlackServer.o `test -f 'SlackServer.cc' || echo '$(srcdir)/'`SlackServer.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o slack-Server.o `test -f 'Server.cc' || echo '$(srcdir)/'`Server.cc
 
-slack-SlackServer.obj: SlackServer.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slack-SlackServer.obj -MD -MP -MF $(DEPDIR)/slack-SlackServer.Tpo -c -o slack-SlackServer.obj `if test -f 'SlackServer.cc'; then $(CYGPATH_W) 'SlackServer.cc'; else $(CYGPATH_W) '$(srcdir)/SlackServer.cc'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slack-SlackServer.Tpo $(DEPDIR)/slack-SlackServer.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='SlackServer.cc' object='slack-SlackServer.obj' libtool=no @AMDEPBACKSLASH@
+slack-Server.obj: Server.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slack-Server.obj -MD -MP -MF $(DEPDIR)/slack-Server.Tpo -c -o slack-Server.obj `if test -f 'Server.cc'; then $(CYGPATH_W) 'Server.cc'; else $(CYGPATH_W) '$(srcdir)/Server.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slack-Server.Tpo $(DEPDIR)/slack-Server.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Server.cc' object='slack-Server.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o slack-SlackServer.obj `if test -f 'SlackServer.cc'; then $(CYGPATH_W) 'SlackServer.cc'; else $(CYGPATH_W) '$(srcdir)/SlackServer.cc'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o slack-Server.obj `if test -f 'Server.cc'; then $(CYGPATH_W) 'Server.cc'; else $(CYGPATH_W) '$(srcdir)/Server.cc'; fi`
 
 slack-Main.o: Main.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(slack_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slack-Main.o -MD -MP -MF $(DEPDIR)/slack-Main.Tpo -c -o slack-Main.o `test -f 'Main.cc' || echo '$(srcdir)/'`Main.cc
